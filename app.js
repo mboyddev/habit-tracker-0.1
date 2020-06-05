@@ -3,6 +3,7 @@
 const tableBody = document.getElementById('table-body');
 const form = document.getElementById('add-habit-form');
 
+
 // CREATE ELEMENT AND RENDER CAFE
 function renderCafe(doc){
     let habit = doc.data();
@@ -12,43 +13,43 @@ function renderCafe(doc){
         <th>${habit.name}</th>
         <td>
             <label for='${id}-sunday'>
-                <input type="checkbox" id='${id}-sunday' class='${id} box'/>
+                <input type="checkbox" id='${id}-sunday' class='${id} box' />
                 <span></span>
             </label>
         </td>
         <td>
             <label for='${id}-monday'>
-                <input type="checkbox" id='${id}-monday' class='${id} box'/>
+                <input type="checkbox" id='${id}-monday' class='${id} box' />
                 <span></span>
             </label>
         </td>
         <td>
             <label for='${id}-tuesday'>
-                <input type="checkbox" id='${id}-tuesday' class='${id} box'/>
+                <input type="checkbox" id='${id}-tuesday' class='${id} box' />
                 <span></span>
             </label>
         </td>
         <td>
             <label for='${id}-wednesday'>
-                <input type="checkbox" id='${id}-wednesday' class='${id} box'/>
+                <input type="checkbox" id='${id}-wednesday' class='${id} box' />
                 <span></span>
             </label>
         </td>
         <td>
             <label for='${id}-thursday'>
-                <input type="checkbox" id='${id}-thursday' class='${id} box'/>
+                <input type="checkbox" id='${id}-thursday' class='${id} box' />
                 <span></span>
             </label>
         </td>
         <td>
             <label for='${id}-friday'>
-                <input type="checkbox" id='${id}-friday' class='${id} box'/>
+                <input type="checkbox" id='${id}-friday' class='${id} box' />
                 <span></span>
             </label>
         </td>
         <td class='last-col'>
             <label for='${id}-saturday'>
-                <input type="checkbox" id='${id}-saturday' class='${id} box'/>
+                <input type="checkbox" id='${id}-saturday' class='${id} box' />
                 <span></span>
             </label>
         </td>
@@ -137,6 +138,63 @@ db.collection('habits').onSnapshot(snapshot => {
         } else if (change.type == 'removed') {
             let tr = tableBody.querySelector('[data-id=' + change.doc.id + ']');
             tableBody.removeChild(tr);
+        }
+    });
+});
+
+// UPDATE CHECKED STATUS OF CHECKBOXES
+db.collection('habits').get().then(doc => {
+    doc.forEach(item => {
+        // console.log(item.data().name, item.data().sunday, item.id);
+        let boxId;
+        // SUNDAYS
+        boxId = `${item.id}-sunday`;
+        if(item.data().sunday == true){
+            document.getElementById(boxId).checked = true;
+        } else if(item.data().sunday == false) {
+            document.getElementById(boxId).checked = false;
+        }
+        // MONDAYS
+        boxId = `${item.id}-monday`;
+        if(item.data().monday == true){
+            document.getElementById(boxId).checked = true;
+        } else if(item.data().monday == false) {
+            document.getElementById(boxId).checked = false;
+        }
+        // TUESDAYS
+        boxId = `${item.id}-tuesday`;
+        if(item.data().tuesday == true){
+            document.getElementById(boxId).checked = true;
+        } else if(item.data().tuesday == false) {
+            document.getElementById(boxId).checked = false;
+        }
+        // WEDNESDAYS
+        boxId = `${item.id}-wednesday`;
+        if(item.data().wednesday == true){
+            document.getElementById(boxId).checked = true;
+        } else if(item.data().wednesday == false) {
+            document.getElementById(boxId).checked = false;
+        }
+        // THURSDAYS
+        boxId = `${item.id}-thursday`;
+        if(item.data().thursday == true){
+            document.getElementById(boxId).checked = true;
+        } else if(item.data().thursday == false) {
+            document.getElementById(boxId).checked = false;
+        }
+        // FRIDDAYS
+        boxId = `${item.id}-fridday`;
+        if(item.data().fridday == true){
+            document.getElementById(boxId).checked = true;
+        } else if(item.data().fridday == false) {
+            document.getElementById(boxId).checked = false;
+        }
+        // SATURDAYS
+        boxId = `${item.id}-saturday`;
+        if(item.data().saturday == true){
+            document.getElementById(boxId).checked = true;
+        } else if(item.data().saturday == false) {
+            document.getElementById(boxId).checked = false;
         }
     });
 });
