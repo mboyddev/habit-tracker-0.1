@@ -1,0 +1,13 @@
+td.cross {
+    padding: 5px 5px;
+    text-align: right;
+    vertical-align: text-top;
+}
+
+span.cross:hover {
+    cursor: pointer;
+}
+
+td.last-col {
+    width: 10px;
+}

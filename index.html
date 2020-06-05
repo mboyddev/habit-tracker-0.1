@@ -1,0 +1,68 @@
+
+
+
+<html>
+    <head>
+        <title>Le Habit Cafe</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.css">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+
+        <h1>Habit Tracker</h1>
+
+        <div class="content container">
+
+            <form id="add-habit-form">
+                <input type="text" name="name" placeholder="Habit">
+                <button>Add Habit</button>
+            </form>
+
+            <table id="habit-list">
+                <thead>
+                    <tr>
+                      <th></th>
+                      <th>S</th>
+                      <th>M</th>
+                      <th>T</th>
+                      <th>W</th>
+                      <th>T</th>
+                      <th>F</th>
+                      <th>S</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody id='table-body'></tbody>
+            </table>
+
+        </div>
+
+        <!-- ** REQUIRED FIREBASE STUFF ** -->
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+        <script src="https://www.gstatic.com/firebasejs/7.14.6/firebase-app.js"></script>
+        <!-- TODO: Add SDKs for Firebase products that you want to use
+            https://firebase.google.com/docs/web/setup#available-libraries -->
+        <script src="https://www.gstatic.com/firebasejs/7.14.6/firebase-analytics.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.14.6/firebase-firestore.js"></script>
+        <script>
+            // Your web app's Firebase configuration
+            var firebaseConfig = {
+                apiKey: "AIzaSyCTHNRGnxmwi7vJUje_9U-laU9joh1b5d8",
+                authDomain: "cafe-cloud-72fb7.firebaseapp.com",
+                databaseURL: "https://cafe-cloud-72fb7.firebaseio.com",
+                projectId: "cafe-cloud-72fb7",
+                storageBucket: "cafe-cloud-72fb7.appspot.com",
+                messagingSenderId: "507483347902",
+                appId: "1:507483347902:web:1051d57034d9a8969cf7ef",
+                measurementId: "G-TML46Y896K"
+            };
+            // Initialize Firebase
+            firebase.initializeApp(firebaseConfig);
+            firebase.analytics();
+
+            const db = firebase.firestore();
+
+        </script>
+        <script src="app.js"></script>
+    </body>
+</html>
